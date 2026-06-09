@@ -9,7 +9,7 @@ function Node(data) {
 
 }
 
-function Tree(array) {
+export function Tree(array) {
 
     function buildTree(array) {
         const sortedArr = [...new Set(array)].sort((a, b) => a - b);
@@ -32,6 +32,5 @@ function Tree(array) {
     }
 
     return buildTree(array);
-
 
 }
