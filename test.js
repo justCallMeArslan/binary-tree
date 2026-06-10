@@ -16,4 +16,6 @@ const test = new Tree([2, 4, 5, 7, 1, 3, 6]);
 prettyPrint(test.root);
 
 
-console.log(test.includes(5));
+console.log(test.includes(2));  // true
+console.log(test.includes(12)); // false
+console.log(test.includes(5));  // true

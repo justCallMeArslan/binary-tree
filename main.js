@@ -33,7 +33,7 @@ export function Tree(array) {
         // for entire array
     }
 
-    const root = buildTree(array);
+    const root = buildTree(array); // stored to pass as closure
 
 
     // function includes(value) { // array version 
@@ -46,8 +46,24 @@ export function Tree(array) {
     //     return false;
     // }
 
-    function includes(value) {}
+    function includes(value) {
+        return search(root, value)
+    }
 
+    function search(node, value) {
+        if (!node) {
+            return false;
+        }
+
+        if (value === node.data) { // if value found 
+            return true
+        }
+
+        return value < node.data
+            ? search(node.left, value)
+            : search(node.right, value); // recursion
+        // on binary tree depending of value
+    }
 
 
     return {
