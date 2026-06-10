@@ -13,4 +13,7 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 const test = new Tree([2, 4, 5, 7, 1, 3, 6]);
 
-prettyPrint(test);
+prettyPrint(test.root);
+
+
+console.log(test.includes(5));
