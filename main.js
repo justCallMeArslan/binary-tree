@@ -1,7 +1,7 @@
 
 function Node(data) {
 
-    return { // initial node
+    return { // initial node state
         data,
         left: null,
         right: null
@@ -28,7 +28,6 @@ export function Tree(array) {
 
             return rootNode;
         }
-
         return build(0, sortedArr.length - 1); // building full balanced binary tree 
         // for entire array
     }
@@ -36,7 +35,7 @@ export function Tree(array) {
     const root = buildTree(array); // stored to pass as closure
 
 
-    // function includes(value) { // array version 
+    // function includes(value) { // array version to commare to BST
 
     //     for (let i = 0; i < sortedArr.length; i++) {
     //         if (sortedArr[i] === value) {
@@ -59,10 +58,9 @@ export function Tree(array) {
             return true
         }
 
-        return value < node.data
+        return value < node.data // recursion on binary tree depending of value
             ? search(node.left, value)
-            : search(node.right, value); // recursion
-        // on binary tree depending of value
+            : search(node.right, value); 
     }
 
     function insert() {
