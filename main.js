@@ -10,7 +10,7 @@ function Node(data) {
 }
 
 export function Tree(array) {
-    const sortedArr = [...new Set(array)].sort((a, b) => a - b); // sort and 
+    const sortedArr = [...new Set(array)].sort((a, b) => a - b); // sort with Set and 
     // remove duplicates from array
 
     function buildTree(array) {
@@ -65,9 +65,14 @@ export function Tree(array) {
         // on binary tree depending of value
     }
 
+    function insert() {
+
+    }
+
 
     return {
         root,
-        includes
+        includes,
+        insert
     }
 }
