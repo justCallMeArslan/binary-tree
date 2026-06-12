@@ -32,7 +32,7 @@ export function Tree(array) {
         // for entire array
     }
 
-    const root = buildTree(array); // stored to pass as closure
+    let root = buildTree(array); // stored to pass as closure
 
 
     // function includes(value) { // array version to commare to BST
@@ -64,7 +64,7 @@ export function Tree(array) {
     }
 
     function insert(value) {
-        return ins(root, value);
+        root = ins(root, value);
     }
 
     function ins(node, value) { // helper function to sustisfy assignment
@@ -87,12 +87,50 @@ export function Tree(array) {
     }
 
     function deleteItem(value) {
-        return
+        return deleteNode(root, value);
+    }
+
+    function deleteNode(root, value) {
+        if (root === null) {
+            return root
+        }
+
+        if (root.data > value) {
+            root.left = deleteNode(root.left, value);
+        } else if (root.data < value) {
+            root.right = deleteNode(root.right, value)
+        } else {
+            if (root.left === null) {
+                return root.right
+            }
+            if (root.right === null) {
+                return root.left;
+            }
+
+            const successor = getSuccessor(root);
+            root.data = successor.data;
+            root.right = deleteNode(root.right, successor.data);
+        }
+
+        return root;
     }
 
 
+
+    function getSuccessor(curr) { // get in - order successor
+        curr = curr.right; // take right subtree as curr succeessor (successor should be bigger)
+        while (curr !== null && curr.left !== null) {
+            curr = curr.left; // if left isnt null, go down the left "wing"
+        }
+        return curr; // return curr (right once, then all the way down node)
+    }
+
+    function getRoot() {
+        return root;
+    }
+
     return {
-        root,
+        getRoot,
         includes,
         insert,
         deleteItem,

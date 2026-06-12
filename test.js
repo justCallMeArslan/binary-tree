@@ -13,7 +13,7 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 const test = new Tree([2, 4, 5, 7, 1, 3, 6]);
 
-prettyPrint(test.root);
+prettyPrint(test.getRoot());
 
 
 console.log(test.includes(2));  // true
@@ -23,5 +23,13 @@ console.log(test.includes(5));  // true
 test.insert(9);
 test.insert(3);
 test.insert(8);
+test.insert(11);
+test.insert(10)
 
-prettyPrint(test.root);
+prettyPrint(test.getRoot());
+
+test.deleteItem(6);
+test.deleteItem(1);
+
+prettyPrint(test.getRoot());
+
