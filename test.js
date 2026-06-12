@@ -19,3 +19,9 @@ prettyPrint(test.root);
 console.log(test.includes(2));  // true
 console.log(test.includes(12)); // false
 console.log(test.includes(5));  // true
+
+test.insert(9);
+test.insert(3);
+test.insert(8);
+
+prettyPrint(test.root);

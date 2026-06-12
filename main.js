@@ -60,17 +60,41 @@ export function Tree(array) {
 
         return value < node.data // recursion on binary tree depending of value
             ? search(node.left, value)
-            : search(node.right, value); 
+            : search(node.right, value);
     }
 
-    function insert() {
+    function insert(value) {
+        return ins(root, value);
+    }
 
+    function ins(node, value) { // helper function to sustisfy assignment
+        if (node === null) { // stop of recursion, insert Node as per value
+            return Node(value);
+        }
+
+        if (value === node.data) {  //array was sorted, so we assume that require 
+            // to keep binary tree deduplicated
+            return node;
+        }
+
+        if (value < node.data) { // if value less then node value - traverse left
+            node.left = ins(node.left, value)
+        } else {
+            node.right = ins(node.right, value) // if value more - traverse right
+        }
+
+        return node;
+    }
+
+    function deleteItem(value) {
+        return
     }
 
 
     return {
         root,
         includes,
-        insert
+        insert,
+        deleteItem,
     }
 }
