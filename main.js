@@ -115,6 +115,9 @@ export function Tree(array) {
         return root;
     }
 
+    function levelOrderForEach(callback) {
+
+    }
 
 
     function getSuccessor(curr) { // get in - order successor
@@ -134,5 +137,6 @@ export function Tree(array) {
         includes,
         insert,
         deleteItem,
+        levelOrderForEach
     }
 }
