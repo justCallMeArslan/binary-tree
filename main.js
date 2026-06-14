@@ -35,7 +35,8 @@ export function Tree(array) {
     let root = buildTree(array); // stored to pass as closure
 
 
-    // function includes(value) { // array version to commare to BST
+    // function includes(value) { // array version to commare to BST, time 
+    // complexity is higher so its better to use binary tree search for BST
 
     //     for (let i = 0; i < sortedArr.length; i++) {
     //         if (sortedArr[i] === value) {
