@@ -117,7 +117,33 @@ export function Tree(array) {
     }
 
     function levelOrderForEach(callback) {
+        return levelOrder(root, callback)
+    }
 
+    function levelOrder(root, callback) {
+        if (root === null) {
+            return;
+        }
+
+        if (!callback) {
+            throw new Error("No callbacx recived")
+        }
+
+        const queue = [root];
+        let front = 0; // implementing index as shift creates 
+
+        while (front < queue.length) {
+            const node = queue[front++];
+
+            callback(node);
+
+            if (node.left) {
+                queue.push(node.left);
+            }
+            if (node.right) {
+                queue.push(node.right);
+            }
+        }
     }
 
 
