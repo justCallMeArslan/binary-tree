@@ -49,3 +49,4 @@ prettyPrint(test.getRoot());
 //     console.log(node.data);
 // });
 
+console.log(test.height(7));

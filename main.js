@@ -144,7 +144,6 @@ export function Tree(array) {
         }
     }
 
-
     function inOrderForEach(callback) {
         return inOrderFE(root, callback)
     }
@@ -200,6 +199,47 @@ export function Tree(array) {
     }
 
 
+    function height(value) {
+        const nodeFound = find(getRoot(), value);
+        if (nodeFound === null) {
+            return null;
+        }
+
+        return calcHeight(nodeFound);
+    }
+
+    function find(node, value) {
+        if (node === null) {
+            return null
+        }
+
+        if (node.data === value) {
+            return node;
+        }
+
+        return value < node.data
+            ? find(node.left, value)
+            : find(node.right, value);
+    }
+
+    function calcHeight(node) {
+        if (node === null) {
+            return -1;
+        }
+
+        let leftHeight = calcHeight(node.left);
+        let rightHeight = calcHeight(node.right);
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    function depth(value) {
+        return calcDepth(root);
+    }
+
+    function calcDepth(root) {
+
+    }
 
     function getSuccessor(curr) { // get in - order successor
         curr = curr.right; // take right subtree as curr succeessor (successor should be bigger)
@@ -221,7 +261,9 @@ export function Tree(array) {
         levelOrderForEach,
         inOrderForEach,
         preOrderForEach,
-        postOrderForEach
+        postOrderForEach,
+        height,
+        depth
     }
 }
 
