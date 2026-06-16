@@ -33,3 +33,6 @@ test.deleteItem(1);
 
 prettyPrint(test.getRoot());
 
+test.levelOrderForEach((node) => {
+    console.log(node.data);
+});

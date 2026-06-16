@@ -126,7 +126,7 @@ export function Tree(array) {
         }
 
         if (!callback) {
-            throw new Error("No callbacx recived")
+            throw new Error("No callbac received")
         }
 
         const queue = [root];
@@ -167,3 +167,4 @@ export function Tree(array) {
         levelOrderForEach
     }
 }
+
