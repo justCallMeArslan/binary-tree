@@ -33,6 +33,19 @@ test.deleteItem(1);
 
 prettyPrint(test.getRoot());
 
-test.levelOrderForEach((node) => {
-    console.log(node.data);
-});
+// test.levelOrderForEach((node) => {.         // completed
+//     console.log(node.data);
+// });
+
+// test.preOrderForEach((node) => {            // completed
+//     console.log(node.data);
+// })
+
+// test.inOrderForEach((node) => {             // completed
+//     console.log(node.data);
+// });
+
+// test.postOrderForEach((node) => {           // completed
+//     console.log(node.data);
+// });
+

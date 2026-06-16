@@ -126,14 +126,12 @@ export function Tree(array) {
         }
 
         if (!callback) {
-            throw new Error("No callbac received")
+            throw new Error("No callback received")
         }
 
         const queue = [root];
-        let front = 0; // implementing index as shift creates 
-
-        while (front < queue.length) {
-            const node = queue[front++];
+        while (queue.length > 0) {
+            const node = queue.shift();
 
             callback(node);
 
@@ -145,6 +143,62 @@ export function Tree(array) {
             }
         }
     }
+
+
+    function inOrderForEach(callback) {
+        return inOrderFE(root, callback)
+    }
+
+    function preOrderForEach(callback) {
+        return preOrderFE(root, callback)
+    }
+
+    function postOrderForEach(callback) {
+        return postOrderFE(root, callback)
+    }
+
+    function inOrderFE(root, callback) {
+        if (root === null) {
+            return;
+        }
+
+        if (!callback) {
+            throw new Error("No callback received")
+        }
+
+        inOrderFE(root.left, callback);
+        callback(root);
+        inOrderFE(root.right, callback);
+    }
+
+    function preOrderFE(root, callback) {
+        if (root === null) {
+            return;
+        }
+
+        if (!callback) {
+            throw new Error("No callback received")
+        }
+
+        callback(root);
+        preOrderFE(root.left, callback);
+        preOrderFE(root.right, callback);
+    }
+
+    function postOrderFE(root, callback) {
+        if (root === null) {
+            return;
+        }
+
+        if (!callback) {
+            throw new Error("No callback received");
+        }
+
+        postOrderFE(root.left, callback);
+        postOrderFE(root.right, callback);
+        callback(root);
+    }
+
 
 
     function getSuccessor(curr) { // get in - order successor
@@ -164,7 +218,10 @@ export function Tree(array) {
         includes,
         insert,
         deleteItem,
-        levelOrderForEach
+        levelOrderForEach,
+        inOrderForEach,
+        preOrderForEach,
+        postOrderForEach
     }
 }
 
