@@ -198,16 +198,6 @@ export function Tree(array) {
         callback(root);
     }
 
-
-    function height(value) {
-        const nodeFound = find(getRoot(), value);
-        if (nodeFound === null) {
-            return null;
-        }
-
-        return calcHeight(nodeFound);
-    }
-
     function find(node, value) {
         if (node === null) {
             return null
@@ -222,6 +212,15 @@ export function Tree(array) {
             : find(node.right, value);
     }
 
+    function height(value) {
+        const nodeFound = find(getRoot(), value);
+        if (nodeFound === null) {
+            return null;
+        }
+
+        return calcHeight(nodeFound);
+    }
+
     function calcHeight(node) {
         if (node === null) {
             return -1;
@@ -234,11 +233,48 @@ export function Tree(array) {
     }
 
     function depth(value) {
-        return calcDepth(root);
+        return calcDepth(getRoot(), value, 0);
     }
 
-    function calcDepth(root) {
+    function calcDepth(node, value, currentDepth) {
+        if (node === null) {
+            return -1;
+        }
 
+        if (node.data === value) {
+            return currentDepth;
+        }
+
+        return value < node.data
+            ? calcDepth(node.left, value, currentDepth + 1)
+            : calcDepth(node.right, value, currentDepth + 1)
+    }
+
+    function isBalanced() { // balanced means that for every node in the tree, 
+        // the height difference between left and the right subtrees no more than 1
+        return checkBalanced(getRoot()) !== -1;
+    }
+
+    function checkBalanced(node) {
+        if (node === null) {
+            return 0;
+        }
+
+        const leftHeight = checkBalanced(node.left);
+        if (leftHeight === -1) {
+            return -1;
+        }
+
+        const rightHeight = checkBalanced(node.right);
+        if (rightHeight === -1) {
+            return -1;
+        }
+
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 
     function getSuccessor(curr) { // get in - order successor
@@ -263,7 +299,8 @@ export function Tree(array) {
         preOrderForEach,
         postOrderForEach,
         height,
-        depth
+        depth,
+        isBalanced
     }
 }
 

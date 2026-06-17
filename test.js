@@ -24,7 +24,7 @@ test.insert(9);
 test.insert(3);
 test.insert(8);
 test.insert(11);
-test.insert(10)
+test.insert(10);
 
 prettyPrint(test.getRoot());
 
@@ -50,3 +50,7 @@ prettyPrint(test.getRoot());
 // });
 
 console.log(test.height(7));
+console.log(test.depth(11));
+
+console.log(test.isBalanced());
+
