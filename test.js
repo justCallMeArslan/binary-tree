@@ -60,3 +60,69 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 // prettyPrint(test.rebalance())
 
 
+
+
+// Tie it all together
+
+const array = randomNumbersArray();
+
+console.log(array);
+
+const check = Tree(array);
+
+prettyPrint(check.getRoot())
+console.log(check.isBalanced());
+
+console.log("level");
+check.levelOrderForEach((node) => {        // completed
+    console.log(node.data);
+});
+
+console.log("preOrder");
+check.preOrderForEach((node) => {            // completed
+    console.log(node.data);
+})
+
+console.log("inOrder");
+check.inOrderForEach((node) => {             // completed
+    console.log(node.data);
+});
+
+console.log("postOrder");
+check.postOrderForEach((node) => {           // completed
+    console.log(node.data);
+});
+
+check.insert(111);
+check.insert(122);
+check.insert(133);
+
+prettyPrint(check.getRoot());
+
+console.log(check.isBalanced());
+
+prettyPrint(check.rebalance());
+
+console.log(check.isBalanced());
+
+
+
+console.log("level");
+check.levelOrderForEach((node) => {        // completed
+    console.log(node.data);
+});
+
+console.log("preOrder");
+check.preOrderForEach((node) => {            // completed
+    console.log(node.data);
+})
+
+console.log("inOrder");
+check.inOrderForEach((node) => {             // completed
+    console.log(node.data);
+});
+
+console.log("postOrder");
+check.postOrderForEach((node) => {           // completed
+    console.log(node.data);
+});

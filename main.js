@@ -296,8 +296,6 @@ export function Tree(array) {
         extractNodesInOrder(getRoot()); // calling function with current root to 
         // get extracted list
 
-        console.log(extractedNodes);
-
         function buildRebalanced(start, end) {
             if (start > end) {
                 return null;
