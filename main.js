@@ -252,7 +252,8 @@ export function Tree(array) {
 
     function isBalanced() { // balanced means that for every node in the tree, 
         // the height difference between left and the right subtrees no more than 1
-        return checkBalanced(getRoot()) !== -1;
+        return checkBalanced(getRoot()) !== -1; // true/false expected as result
+        //  because of !== 
     }
 
     function checkBalanced(node) {
@@ -277,6 +278,49 @@ export function Tree(array) {
         return 1 + Math.max(leftHeight, rightHeight);
     }
 
+    function rebalance() {
+
+        const extractedNodes = [];
+
+        function extractNodesInOrder(node) {
+            if (node === null) {
+                return;
+            }
+
+            extractNodesInOrder(node.left);
+            extractedNodes.push(node.data); // takes only node.data, left: and right: 
+            // are not getting sorted
+            extractNodesInOrder(node.right);
+        }
+
+        extractNodesInOrder(getRoot()); // calling function with current root to 
+        // get extracted list
+
+        console.log(extractedNodes);
+
+        function buildRebalanced(start, end) {
+            if (start > end) {
+                return null;
+            }
+
+            const mid = Math.floor((start + end) / 2);
+            const value = extractedNodes[mid];
+            const node = Node(value); // recreating new Node (new left and right)
+
+            node.left = buildRebalanced(start, mid - 1);
+            node.right = buildRebalanced(mid + 1, end);
+
+            return node;
+        }
+
+        root = buildRebalanced(0, extractedNodes.length - 1);
+
+        return root; // returning rebalanced root.
+    }
+
+
+
+
     function getSuccessor(curr) { // get in - order successor
         curr = curr.right; // take right subtree as curr succeessor (successor should be bigger)
         while (curr !== null && curr.left !== null) {
@@ -300,7 +344,21 @@ export function Tree(array) {
         postOrderForEach,
         height,
         depth,
-        isBalanced
+        isBalanced,
+        rebalance
     }
 }
 
+
+
+export function fillArray() {
+    const randomizedArray = [];
+
+    for (let i = 0; i < 10; i++) {
+        const item = Math.floor(Math.random() * 100); // to create random number every
+        /// loop iteration
+        randomizedArray.push(item)
+    }
+
+    return randomizedArray;
+}
