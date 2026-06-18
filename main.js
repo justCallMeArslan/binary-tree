@@ -318,8 +318,7 @@ export function Tree(array) {
         return root; // returning rebalanced root.
     }
 
-
-
+    // getter functions
 
     function getSuccessor(curr) { // get in - order successor
         curr = curr.right; // take right subtree as curr succeessor (successor should be bigger)
@@ -350,8 +349,7 @@ export function Tree(array) {
 }
 
 
-
-export function fillArray() {
+export function randomNumbersArray() {
     const randomizedArray = [];
 
     for (let i = 0; i < 10; i++) {

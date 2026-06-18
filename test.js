@@ -1,4 +1,4 @@
-import { Tree } from "./main.js";
+import { Tree, randomNumbersArray } from "./main.js";
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
     if (node === null || node === undefined) {
@@ -11,29 +11,32 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 }
 
 
-const test = new Tree([2, 4, 5, 7, 1, 3, 6]);
-
-prettyPrint(test.getRoot());
+// testing while building
 
 
-console.log(test.includes(2));  // true
-console.log(test.includes(12)); // false
-console.log(test.includes(5));  // true
+// const test = new Tree([2, 4, 5, 7, 1, 3, 6]);
 
-test.insert(9);
-test.insert(3);
-test.insert(8);
-test.insert(11);
-test.insert(10);
+// prettyPrint(test.getRoot());
 
-prettyPrint(test.getRoot());
 
-test.deleteItem(6);
-test.deleteItem(1);
+// console.log(test.includes(2));  // true
+// console.log(test.includes(12)); // false
+// console.log(test.includes(5));  // true
 
-prettyPrint(test.getRoot());
+// test.insert(9);
+// test.insert(3);
+// test.insert(8);
+// test.insert(11);
+// test.insert(10);
 
-// test.levelOrderForEach((node) => {.         // completed
+// prettyPrint(test.getRoot());
+
+// test.deleteItem(6);
+// test.deleteItem(1);
+
+// prettyPrint(test.getRoot());
+
+// test.levelOrderForEach((node) => {        // completed
 //     console.log(node.data);
 // });
 
@@ -49,8 +52,11 @@ prettyPrint(test.getRoot());
 //     console.log(node.data);
 // });
 
-console.log(test.height(7));
-console.log(test.depth(11));
+// console.log(test.height(7));
+// console.log(test.depth(11));
 
-console.log(test.isBalanced());
+// console.log(test.isBalanced());
+
+// prettyPrint(test.rebalance())
+
 
