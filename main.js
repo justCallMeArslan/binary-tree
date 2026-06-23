@@ -2,7 +2,7 @@
 function Node(data) {
 
     return { // initial node state
-        data,
+        data, // value of node, accessed by node.data
         left: null,
         right: null
     }
@@ -10,13 +10,13 @@ function Node(data) {
 }
 
 export function Tree(array) {
-    const sortedArr = [...new Set(array)].sort((a, b) => a - b); // sort with Set and 
+    const sortedArr = [...new Set(array)].sort((a, b) => a - b); // sort with Set to 
     // remove duplicates from array
 
     function buildTree(array) {
 
         function build(start, end) { // helper function to build root and subtrees
-            if (start > end) { //end of recursion
+            if (start > end) { // end of recursion
                 return null;
             }
 
